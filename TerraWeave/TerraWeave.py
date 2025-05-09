@@ -84,6 +84,7 @@ class TerraformWrapper:
         command = ["terraform", "apply"]
         if plan_file:
             command.append(plan_file)
+            command.append("-auto-approve")
         else:
             command.append("-auto-approve")
         return self._run_command(command)
@@ -118,9 +119,11 @@ class TerraformWrapper:
         Raises:
             RuntimeError: If the command fails.
         """
-        command = ["terraform", "output"]
+        command = ["terraform", "output", "-json"]
         if name:
+
             command.append(name)
+
         return self._run_command(command)
     
     def workspace_list(self):
