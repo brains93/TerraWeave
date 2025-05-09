@@ -89,7 +89,7 @@ class TerraformWrapper:
             command.append("-auto-approve")
         return self._run_command(command)
 
-    def destroy(self):
+    def destroy(self, tfvarfile=None):
         """
         Destroy the Terraform-managed infrastructure.
 
@@ -100,8 +100,13 @@ class TerraformWrapper:
 
         Raises:
             RuntimeError: If the command fails.
+
+       
         """
-        return self._run_command(["terraform", "destroy", "-auto-approve"])
+        command = ["terraform", "destroy", "-auto-approve"]
+        if tfvarfile:
+            command.append("-var-file={tfvarfile}")
+        return self._run_command(command)
 
     def output(self, name=None):
         """

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="terraweave",  # Package name
-    version="0.1.4",  # Initial version
+    version="0.1.5",  # Initial version
     description="A Python wrapper for Terraform",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
